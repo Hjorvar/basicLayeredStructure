@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+  <h1>Users</h1>
+  
+  <!-- Form til að bæta við nýjum notanda -->
+  <h2>Add User</h2>
+  <form id="addUserForm">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit">Add User</button>
+  </form>
+
+  <!-- Listi yfir notendur -->
+  <h2>All Users</h2>
+  <ul id="userList">
+    <% users.forEach(user => { %>
+      <li>
+        <span><%= user.name %> - <%= user.email %></span>
+        <button onclick="editUser(<%= user.id %>)">Edit</button>
+        <button onclick="deleteUser(<%= user.id %>)">Delete</button>
+      </li>
+    <% }) %>
+  </ul>
+
+  <!-- Form til að leita að notanda -->
+  <h2>Search User</h2>
+  <form id="searchUserForm">
+    <input type="text" id="searchId" placeholder="User ID" required>
+    <button type="submit">Search</button>
+  </form>
+
+  <!-- Leitarniðurstöður -->
+  <div id="searchResult"></div>
+</body>
+</html>
